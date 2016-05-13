@@ -1,0 +1,51 @@
+#mothergrid {
+  display: flex;
+  height: 180px;
+  width: 180px;
+  flex-wrap: wrap;
+  margin: 0 auto;
+  border: 1px solid black
+}
+
+.grid {
+  border: 1.75px solid black;
+  height: 18px;
+  width: 18px;
+  box-sizing: border-box;
+  align-items: center;
+  margin: 0 0;
+  background-color: white;
+}
+
+.select {
+  height: 100px;
+  width: 100px;
+  border: 2px solid black;
+  box-sizing: border-box;
+  flex-direction: row;
+}
+
+section {
+  display: flex;
+
+}
+#porthole {
+  background-color: white;
+  height: 100px;
+  width: 100px;
+  border: 2px solid black;
+  box-sizing: border-box;
+  flex-direction: row;
+}
+
+#red {
+  background-color: red;
+}
+
+#blue {
+  background-color: blue;
+}
+
+#green {
+  background-color: green;
+}

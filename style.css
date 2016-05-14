@@ -1,51 +1,148 @@
-#mothergrid {
-  display: flex;
-  height: 180px;
-  width: 180px;
-  flex-wrap: wrap;
-  margin: 0 auto;
-  border: 1px solid black
-}
 
 .grid {
-  border: 1.75px solid black;
-  height: 18px;
-  width: 18px;
+  border: 1px solid #f1f1f3;
+  height: 16px;
+  width: 16px;
   box-sizing: border-box;
-  align-items: center;
   margin: 0 0;
-  background-color: white;
+  display: inline-block;
+  float: left;
+  transition: background 100ms;
+}
+
+.colorButton {
+  height: 50px;
+  width: 50px;
+  border-raius: 30px;
+  display: block;
+  margin: 10px auto;
+}
+
+.undoButton {
+  margin: 0 auto;
+  position: relative;
 }
 
 .select {
-  height: 100px;
-  width: 100px;
+  height: 60px;
+  width: 60px;
   border: 2px solid black;
   box-sizing: border-box;
-  flex-direction: row;
+  border-radius: 50%;
+  display: block;
+  float: right;
 }
 
-section {
-  display: flex;
-
+.outer {
+  margin-top: 20px;
 }
+
+main {
+  position: relative;
+}
+
+#mothergrid {
+  height: 480px;
+  width: 960px;
+  margin: 0 auto;
+  border: 1px solid black;
+  top: 10%
+  position: absolute;
+}
+
+.left {
+  font-size: 0;
+  position: fixed;
+  top: 3%;
+  left: 3%;
+  width: 120px;
+  height: 480px;
+  border: 2px solid black;
+  border-radius: 10px;
+}
+
+.right {
+  font-size: 0;
+  position: fixed;
+  top: 3%;
+  right: 3%;
+  width: 120px;
+  height: 480px;
+  border: 2px solid black;
+  border-radius: 10px;
+}
+
 #porthole {
   background-color: white;
-  height: 100px;
-  width: 100px;
-  border: 2px solid black;
+  height: 90px;
+  width: 90px;
+  border: 2px dashed black;
   box-sizing: border-box;
-  flex-direction: row;
+  display: block;
+  border-radius: 50%;
+  margin: 0 auto;
 }
 
 #red {
   background-color: red;
 }
 
+#darkred {
+  background-color: darkred;
+}
+
 #blue {
   background-color: blue;
 }
 
-#green {
-  background-color: green;
+#darkblue {
+  background-color: darkblue;
+}
+
+#lime {
+  background-color: lime;
+}
+
+#darkgreen {
+  background-color: darkgreen;
+}
+
+#yellow {
+  background-color: yellow;
+}
+
+#khaki {
+  background-color: khaki;
+}
+
+#orange {
+  background-color: orange;
+}
+
+#darkorange {
+  background-color: darkorange;
+}
+
+#darkviolet {
+  background-color: darkviolet;
+}
+
+#purple {
+  background-color: purple;
+}
+
+#lightgrey {
+  background-color: lightgrey;
+}
+
+#grey {
+  background-color: grey;
+}
+
+#black {
+  background-color: black;
+}
+
+#white {
+  background-color: white;
 }

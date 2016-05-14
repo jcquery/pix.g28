@@ -6,14 +6,35 @@
     <title></title>
   </head>
   <body>
-    <div id="mothergrid">
-    </div>
-    <section>
-      <div class="select" id="red"></div>
-      <div class="select" id="green"></div>
-      <div class="select" id="blue"></div>
-      <div id="porthole"></div>
-    </section>
+    <main>
+      <div class="outer">
+        <div id="mothergrid">
+        </div>
+        <section class="left">
+          <div class="select" id="red"></div>
+          <div class="select" id="darkred"></div>
+          <div class="select" id="blue"></div>
+          <div class="select" id="darkblue"></div>
+          <div class="select" id="lime"></div>
+          <div class="select" id="darkgreen"></div>
+          <div class="select" id="yellow"></div>
+          <div class="select" id="khaki"></div>
+          <div class="select" id="orange"></div>
+          <div class="select" id="darkorange"></div>
+          <div class="select" id="darkviolet"></div>
+          <div class="select" id="purple"></div>
+          <div class="select" id="lightgrey"></div>
+          <div class="select" id="grey"></div>
+          <div class="select" id="black"></div>
+          <div class="select" id="white"></div>
+        </section>
+        <section class="right">
+          <div id="porthole"></div>
+          <input class="colorButton" value="#ffffff" type="color" onchange="chooseColor()"/></input>
+          <input value="undo" type="button" class="undoButton"></input>
+        </section>
+      </div>
+    </main>
     <script src="app.js"></script>
   </body>
 </html>

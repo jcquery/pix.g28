@@ -28,7 +28,7 @@ var chooseColor = function() {
 //clears the most recent change
 var undoClear = function() {
   tinyArr = [];
-  undoArr = undoArr.slice(0, undoArr.length - undoTrav + 1);
+  undoArr = undoArr.slice(0, undoArr.length - undoTrav);
   undoTrav = 0;
 }
 
@@ -48,9 +48,9 @@ var undo = function() {
     if (undoTrav === 0){
       tinyArr = [];
       for (var j = 0; j < document.getElementsByClassName('grid').length; j++){
-        if (document.getElementsByClassName('grid')[j].style.backgroundColor !== "white") {
+        if (document.getElementsByClassName('grid')[j].style.backgroundColor !== "white" && document.getElementsByClassName('grid')[j].style.backgroundColor !== "") {
           var newObj = {};
-          newObj[event.target.id] = event.target.style.backgroundColor;
+          newObj[document.getElementsByClassName('grid')[j].id] = document.getElementsByClassName('grid')[j].style.backgroundColor;
           console.log(newObj);
           tinyArr.push(newObj);
         }
@@ -58,7 +58,7 @@ var undo = function() {
       undoArr.push(tinyArr);
       undoTrav += 1;
     }
-    for (var i = 0; i < undoArr[undoArr.length - undoTrav -1].length; i++){
+    for (var i = 0; i < undoArr[undoArr.length - undoTrav - 1].length; i++){
       for(key in undoArr[undoArr.length - undoTrav - 1][i]) {
         document.getElementById(key).style.backgroundColor = undoArr[undoArr.length - undoTrav - 1][i][key];
       }
@@ -68,12 +68,14 @@ var undo = function() {
 }
 
 var redo = function () {
-  for (var i = 0; i < undoArr[undoArr.length - undoTrav].length; i++){
-    for(key in undoArr[undoArr.length - undoTrav][i]) {
-      document.getElementById(key).style.backgroundColor = undoArr[undoArr.length - undoTrav][i][key];
+  if (undoTrav > 0){
+    for (var i = 0; i < undoArr[undoArr.length - undoTrav + 1].length; i++){
+      for(key in undoArr[undoArr.length - undoTrav + 1][i]) {
+        document.getElementById(key).style.backgroundColor = undoArr[undoArr.length - undoTrav + 1][i][key];
+      }
     }
+    undoTrav -= 1;
   }
-  undoTrav -= 1;
 }
 
 //colors pixels on mouseover
@@ -89,7 +91,9 @@ var paintOff = function () {
   document.removeEventListener('mouseover', undoListen);
   document.removeEventListener("mouseover", paint);
   document.removeEventListener("mouseup", paintOff);
-  undoArr.push(tinyArr);
+  if (tinyArr.length > 0){
+    undoArr.push(tinyArr);
+  }
 }
 
 //selects the color to paint
@@ -116,4 +120,5 @@ mom.addEventListener('mousedown', undoClear);
 document.addEventListener('mousedown', undoListen);
 document.addEventListener('mousedown', assign);
 undoButton.addEventListener('click', undo);
+redoButton.addEventListener('click', redo);
 populate(1800);

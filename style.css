@@ -23,6 +23,11 @@
   position: relative;
 }
 
+.redoButton {
+  margin: 0 auto;
+  position: relative;
+}
+
 .select {
   height: 60px;
   width: 60px;

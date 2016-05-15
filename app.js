@@ -4,8 +4,10 @@ var color = "white";
 var porthole = document.getElementById('porthole');
 var undoButton = document.getElementsByClassName('undoButton')[0];
 var colorButton = document.getElementsByClassName('colorButton')[0];
-undoArr = [];
-undoTrav = 0;
+var redoButton = document.getElementsByClassName('redoButton')[0];
+var undoArr = [];
+var undoTrav = 0;
+var tinyArr = [];
 
 //colors a single pixel, triggers paint and undoListen functions for mouse movement
 var assign = function(event) {
@@ -25,28 +27,53 @@ var chooseColor = function() {
 
 //clears the most recent change
 var undoClear = function() {
-  undoArr = [];
+  tinyArr = [];
+  undoArr = undoArr.slice(0, undoArr.length - undoTrav + 1);
+  undoTrav = 0;
 }
 
 //keeps track of the most recent change
 var undoListen = function(event) {
   if (event.target.className === "grid" && event.target.style.backgroundColor !== color) {
-    var newArr = []
     var newObj = {};
     newObj[event.target.id] = event.target.style.backgroundColor;
     console.log(newObj);
-    newArr.push(newObj);
-    undoArr.push(newArr);
+    tinyArr.push(newObj);
   }
 }
 
 //reverts the most recent change
 var undo = function() {
-  for (var i = 0; i < undoArr.length; i++){
-    for(key in undoArr[i]) {
-      document.getElementById(key).style.backgroundColor = undoArr[i][key];
+  if (undoArr.length - undoTrav > 0){
+    if (undoTrav === 0){
+      tinyArr = [];
+      for (var j = 0; j < document.getElementsByClassName('grid').length; j++){
+        if (document.getElementsByClassName('grid')[j].style.backgroundColor !== "white") {
+          var newObj = {};
+          newObj[event.target.id] = event.target.style.backgroundColor;
+          console.log(newObj);
+          tinyArr.push(newObj);
+        }
+      }
+      undoArr.push(tinyArr);
+      undoTrav += 1;
+    }
+    for (var i = 0; i < undoArr[undoArr.length - undoTrav -1].length; i++){
+      for(key in undoArr[undoArr.length - undoTrav - 1][i]) {
+        document.getElementById(key).style.backgroundColor = undoArr[undoArr.length - undoTrav - 1][i][key];
+      }
+    }
+    undoTrav += 1;
+  }
+}
+
+var redo = function () {
+  for (var i = 0; i < undoArr[undoArr.length - undoTrav].length; i++){
+    for(key in undoArr[undoArr.length - undoTrav][i]) {
+      document.getElementById(key).style.backgroundColor = undoArr[undoArr.length - undoTrav][i][key];
     }
   }
+  undoTrav -= 1;
 }
 
 //colors pixels on mouseover
@@ -62,6 +89,7 @@ var paintOff = function () {
   document.removeEventListener('mouseover', undoListen);
   document.removeEventListener("mouseover", paint);
   document.removeEventListener("mouseup", paintOff);
+  undoArr.push(tinyArr);
 }
 
 //selects the color to paint

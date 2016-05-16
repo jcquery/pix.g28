@@ -1,3 +1,14 @@
+body {
+  font-family: 'Trebuchet MS', 'Lucida Grande', 'Lucida Sans Unicode', 'Lucida Sans', Tahoma, sans-serif;
+}
+
+p {
+  text-align: center;
+  font-size: 18px;
+  margin: 0 auto;
+  margin-bottom: 17px;
+}
+
 
 .grid {
   border: 1px solid #f1f1f3;
@@ -11,21 +22,81 @@
 }
 
 .colorButton {
-  height: 50px;
-  width: 50px;
+  background-color: white;
+  height: 60px;
+  width: 60px;
   border-raius: 30px;
+  border: 2px solid black;
   display: block;
   margin: 10px auto;
+  margin-bottom: 5px;
+}
+
+.colorButton:hover {
+  box-shadow: 0px 0px 7px 0px rgba(0,0,0,0.75);
 }
 
 .undoButton {
-  margin: 0 auto;
-  position: relative;
+  background-color: white;
+  margin-left: 3px;
+  float: left;
+  border-radius: 50%;
+  height: 45px;
+  width: 55px;
+  font-size: 35px;
+  border: 2px solid black;
+}
+
+.undoButton:hover {
+  border-color: darkorange;
+  box-shadow: 0px 0px 7px 0px rgba(255,140,0,0.75);
+}
+
+.undoButton:active {
+  color: darkorange;
 }
 
 .redoButton {
+  margin-right: 3px;
+  float: right;
+  height: 45px;
+  width: 55px;
+  font-size: 35px;
+  border-radius: 50%;
+  border: 2px solid black;
+  background-color: white;
+  margin-bottom: 5px;
+}
+
+.redoButton:hover {
+  border-color: lime;
+  box-shadow: 0px 0px 7px 0px rgba(0,255,0,0.75);
+}
+
+.redoButton:active {
+  color: lime;
+}
+
+.clearButton {
+  font-size: 50px;
+  height: 80px;
+  width: 80px;
+  border-radius: 25%;
+  display: block;
   margin: 0 auto;
-  position: relative;
+  border: 2px solid black;
+  background-color: white;
+  margin-bottom: 5px;
+}
+
+.clearButton:hover {
+  border: 3px solid red;
+  box-shadow: 0px 0px 7px 0px rgba(255,0,0,0.75);
+}
+
+.clearButton:active {
+  background-color: red;
+  color: white;
 }
 
 .select {
@@ -38,8 +109,12 @@
   float: right;
 }
 
+.select:hover {
+  box-shadow: 0px 0px 7px 0px rgba(0,0,0,0.75);
+}
+
 .outer {
-  margin-top: 20px;
+  margin-top: 4.25%;
 }
 
 main {
@@ -58,7 +133,7 @@ main {
 .left {
   font-size: 0;
   position: fixed;
-  top: 3%;
+  top: 7.25%;
   left: 3%;
   width: 120px;
   height: 480px;
@@ -69,7 +144,7 @@ main {
 .right {
   font-size: 0;
   position: fixed;
-  top: 3%;
+  top: 7.25%;
   right: 3%;
   width: 120px;
   height: 480px;
@@ -81,11 +156,12 @@ main {
   background-color: white;
   height: 90px;
   width: 90px;
-  border: 2px dashed black;
+  border: 3px dotted black;
   box-sizing: border-box;
   display: block;
   border-radius: 50%;
-  margin: 0 auto;
+  margin: 20px auto;
+  margin-bottom: 5px;
 }
 
 #red {
